@@ -60,7 +60,7 @@ const QuoteSection = ({
         'Specific Requirements / Notes': notes || 'None',
       }
 
-      const response = await fetch('https://formsubmit.co/ajax/info@styleincar.com', {
+      const response = await fetch('https://formsubmit.co/ajax/e995f601b30e07a7fb7b77a7725995cc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
