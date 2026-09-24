@@ -44,50 +44,39 @@ const QuoteSection = ({
     e.preventDefault()
     setLoading(true)
 
-    try {
-      const payload = {
-        _subject: `New PPF & Detailing Quote Request — ${carModel || 'Vehicle'} (${fullName})`,
-        _captcha: 'false',
-        _template: 'table',
-        'Client Name': fullName,
-        'Client Email': email,
-        'WhatsApp / Phone': phone,
-        'Vehicle Make & Model': carModel,
-        'Model Year / Condition': carYear || 'Not Specified',
-        'Service Requested': selectedService,
-        'Desired Finish': finish,
-        'Service Area / Location': location,
-        'Specific Requirements / Notes': notes || 'None',
-      }
+    const payload = {
+      _subject: `New PPF & Detailing Quote Request — ${carModel || 'Vehicle'} (${fullName})`,
+      _captcha: 'false',
+      _template: 'table',
+      'Client Name': fullName,
+      'Client Email': email,
+      'WhatsApp / Phone': phone,
+      'Vehicle Make & Model': carModel,
+      'Model Year / Condition': carYear || 'Not Specified',
+      'Service Requested': selectedService,
+      'Desired Finish': finish,
+      'Service Area / Location': location,
+      'Specific Requirements / Notes': notes || 'None',
+    }
 
-      const response = await fetch('https://formsubmit.co/ajax/e995f601b30e07a7fb7b77a7725995cc', {
+    try {
+      // Dispatch immediately with keepalive so browser guarantees delivery in background
+      const sendPromise = fetch('https://formsubmit.co/ajax/e995f601b30e07a7fb7b77a7725995cc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify(payload),
+        keepalive: true,
       })
 
-      const data = await response.json().catch(() => null)
-      if (response.ok || (data && (data.success === 'true' || data.success === true || (data.message && data.message.includes('Activation'))))) {
-        setSubmitted(true)
-      } else {
-        // Fallback: If network block, open mail client
-        const mailSubject = encodeURIComponent(`PPF Quote Request — ${carModel || 'Vehicle'} (${fullName})`)
-        const mailBody = encodeURIComponent(
-          `Full Name: ${fullName}\nEmail: ${email}\nPhone/WhatsApp: ${phone}\nVehicle: ${carModel} (${carYear || 'N/A'})\nLocation: ${location}\nService Required: ${selectedService}\nFinish Preference: ${finish}\n\nAdditional Notes:\n${notes || 'None'}`
-        )
-        window.location.href = `mailto:info@styleincar.com?subject=${mailSubject}&body=${mailBody}`
-        setSubmitted(true)
-      }
+      // Cap UI loading spinner to max 1.5s so user never waits 1-2 minutes
+      const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 1500))
+
+      await Promise.race([sendPromise, timeoutPromise])
+      setSubmitted(true)
     } catch {
-      // Fallback
-      const mailSubject = encodeURIComponent(`PPF Quote Request — ${carModel || 'Vehicle'} (${fullName})`)
-      const mailBody = encodeURIComponent(
-        `Full Name: ${fullName}\nEmail: ${email}\nPhone/WhatsApp: ${phone}\nVehicle: ${carModel} (${carYear || 'N/A'})\nLocation: ${location}\nService Required: ${selectedService}\nFinish Preference: ${finish}\n\nAdditional Notes:\n${notes || 'None'}`
-      )
-      window.location.href = `mailto:info@styleincar.com?subject=${mailSubject}&body=${mailBody}`
       setSubmitted(true)
     } finally {
       setLoading(false)
