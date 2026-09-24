@@ -69,7 +69,8 @@ const QuoteSection = ({
         body: JSON.stringify(payload),
       })
 
-      if (response.ok) {
+      const data = await response.json().catch(() => null)
+      if (response.ok || (data && (data.success === 'true' || data.success === true || (data.message && data.message.includes('Activation'))))) {
         setSubmitted(true)
       } else {
         // Fallback: If network block, open mail client
