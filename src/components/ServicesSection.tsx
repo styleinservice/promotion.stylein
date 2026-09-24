@@ -83,6 +83,24 @@ const services: ServiceItem[] = [
       'Multi-stage machine polishing and swirl-mark removal to restore factory paint clarity. Includes deep exterior decontamination, engine-bay detailing, wheel and tyre treatment, and high-gloss ceramic sealant finish.',
     features: ['Multi-Stage Machine Polish', 'Swirl & Defect Removal', 'Engine-Bay Detailing', 'Ceramic Sealant Finish'],
   },
+  {
+    number: '09',
+    name: 'Car Seat Customization',
+    quoteOption: 'Car Seat Customization (From AED 800)',
+    price: 'From AED 800',
+    description:
+      "Transform your vehicle's interior with bespoke seating tailored to your exact style preferences. We offer custom contrast stitching, premium ergonomic padding, and unique panel patterns to deliver a distinctive, high-end look. Upgrade your driving comfort with top-tier craftsmanship designed for maximum luxury and durability.",
+    features: ['Custom Stitching', 'Bespoke Interior', 'Ergonomic Upgrade', 'Luxury Aesthetics'],
+  },
+  {
+    number: '10',
+    name: 'Car Seat Reupholstery',
+    quoteOption: 'Car Seat Reupholstery (From AED 800)',
+    price: 'From AED 800',
+    description:
+      "Restore your car's damaged, worn-out, or faded seats to brand-new condition using premium automotive-grade materials. Choose from genuine leather, ultra-durable faux leather, or high-performance fabrics engineered to withstand heat and daily wear. Enhance both comfort and resale value with expert upholstery refurbishment.",
+    features: ['Leather Restoration', 'Interior Refurbishment', 'Seat Repair', 'Heat Resistant'],
+  },
 ]
 
 interface ServicesSectionProps {

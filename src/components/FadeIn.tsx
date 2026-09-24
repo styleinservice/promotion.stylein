@@ -8,7 +8,6 @@ interface FadeInProps {
   x?: number
   y?: number
   className?: string
-  as?: keyof HTMLElementTagNameMap
 }
 
 const FadeIn = ({
@@ -18,12 +17,9 @@ const FadeIn = ({
   x = 0,
   y = 30,
   className = '',
-  as = 'div',
 }: FadeInProps) => {
-  const MotionComponent = motion.create(as as any)
-
   return (
-    <MotionComponent
+    <motion.div
       initial={{ opacity: 0, x, y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: '50px', amount: 0 }}
@@ -35,7 +31,7 @@ const FadeIn = ({
       className={className}
     >
       {children}
-    </MotionComponent>
+    </motion.div>
   )
 }
 

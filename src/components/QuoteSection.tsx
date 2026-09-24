@@ -1,21 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import FadeIn from './FadeIn'
-
-export const serviceOptions = [
-  'Clear PPF — Full Body (From AED 3,500)',
-  'Color PPF — Full Body (From AED 3,999)',
-  'Color Wrapping & Vinyl (From AED 3,600)',
-  'Partial / Custom PPF (Custom Quote)',
-  'Door & Edge Protection (+AED 1,500)',
-  'Nano Ceramic Coating (From AED 649)',
-  'Motorcycle PPF (From AED 2,000)',
-  'Interior Detailing & Steam (From AED 349)',
-  'Full Detailing & Polish (From AED 499)',
-]
-
-const finishOptions = ['High-Gloss', 'Satin Matte', 'Color Change', 'Undecided / Need Advice']
-const locations = ['Ajman (Studio / Pickup)', 'Sharjah (Complimentary Pickup)', 'Dubai (Complimentary Pickup)', 'Abu Dhabi / Other']
+import { serviceOptions, finishOptions, locationOptions as locations } from '../constants/services'
 
 interface QuoteSectionProps {
   selectedService?: string

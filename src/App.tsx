@@ -5,8 +5,10 @@ import AboutSection from './components/AboutSection'
 import ServicesSection from './components/ServicesSection'
 import ProjectsSection from './components/ProjectsSection'
 import FaqSection from './components/FaqSection'
-import QuoteSection, { serviceOptions } from './components/QuoteSection'
+import QuoteSection from './components/QuoteSection'
+import { serviceOptions } from './constants/services'
 import QuoteModal from './components/QuoteModal'
+import ScrollToTop from './components/ScrollToTop'
 import Footer from './components/Footer'
 
 function App() {
@@ -49,6 +51,9 @@ function App() {
         onClose={() => setIsModalOpen(false)}
         initialService={selectedService}
       />
+
+      {/* Floating Animated Scroll To Top Button */}
+      <ScrollToTop />
     </div>
   )
 }

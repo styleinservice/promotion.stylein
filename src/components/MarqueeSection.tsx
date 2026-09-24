@@ -42,9 +42,6 @@ const row1Services: ServiceCard[] = [
     imageUrl: '/partial-ppf.jpg?v=3',
     targetId: '#service-04',
   },
-]
-
-const row2Services: ServiceCard[] = [
   {
     number: '05',
     title: 'Ceramic Coating',
@@ -53,6 +50,9 @@ const row2Services: ServiceCard[] = [
     imageUrl: '/ceramic-coating.jpg?v=3',
     targetId: '#service-05',
   },
+]
+
+const row2Services: ServiceCard[] = [
   {
     number: '06',
     title: 'Motorcycle PPF',
@@ -76,6 +76,22 @@ const row2Services: ServiceCard[] = [
     badge: 'Swirl Removal & Sealant',
     imageUrl: '/paint-correction.jpg?v=3',
     targetId: '#service-08',
+  },
+  {
+    number: '09',
+    title: 'Car Seat Customization',
+    price: 'From AED 800',
+    badge: 'Bespoke Stitching & Ergonomics',
+    imageUrl: '/seat-customization.png',
+    targetId: '#service-09',
+  },
+  {
+    number: '10',
+    title: 'Car Seat Reupholstery',
+    price: 'From AED 800',
+    badge: 'Premium Leather Restoration',
+    imageUrl: '/seat-reupholstery.png',
+    targetId: '#service-10',
   },
 ]
 

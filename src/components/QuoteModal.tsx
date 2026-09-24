@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { serviceOptions } from './QuoteSection'
+import { serviceOptions, finishOptions, locationOptions as locations } from '../constants/services'
 
 interface QuoteModalProps {
   isOpen: boolean
@@ -8,11 +8,18 @@ interface QuoteModalProps {
   initialService?: string
 }
 
-const finishOptions = ['High-Gloss', 'Satin Matte', 'Color Change', 'Undecided / Need Advice']
-const locations = ['Ajman (Studio / Pickup)', 'Sharjah (Complimentary Pickup)', 'Dubai (Complimentary Pickup)', 'Abu Dhabi / Other']
-
 const QuoteModal = ({ isOpen, onClose, initialService }: QuoteModalProps) => {
   const [selectedService, setSelectedService] = useState<string>(initialService || serviceOptions[0])
+  const [prevInitialService, setPrevInitialService] = useState(initialService)
+
+  // Sync initialService if changed from parent
+  if (initialService !== prevInitialService) {
+    setPrevInitialService(initialService)
+    if (initialService) {
+      setSelectedService(initialService)
+    }
+  }
+
   const [finish, setFinish] = useState<string>('High-Gloss')
   const [location, setLocation] = useState<string>('Ajman (Studio / Pickup)')
   const [fullName, setFullName] = useState('')
@@ -23,13 +30,6 @@ const QuoteModal = ({ isOpen, onClose, initialService }: QuoteModalProps) => {
   const [notes, setNotes] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  // Sync initialService if changed
-  useEffect(() => {
-    if (initialService) {
-      setSelectedService(initialService)
-    }
-  }, [initialService])
 
   // Close on Escape key
   useEffect(() => {

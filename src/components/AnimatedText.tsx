@@ -1,4 +1,4 @@
-import { useRef, type CSSProperties } from 'react'
+import { useRef, useMemo, type CSSProperties } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 interface AnimatedTextProps {
@@ -14,16 +14,24 @@ const AnimatedText = ({ text, className = '', style }: AnimatedTextProps) => {
     offset: ['start 0.85', 'end 0.25'],
   })
 
-  const words = text.split(' ')
+  const wordsWithIndices = useMemo(() => {
+    const rawWords = text.split(' ')
+    const result: Array<{ word: string; startIndex: number }> = []
+    let current = 0
+    for (let i = 0; i < rawWords.length; i++) {
+      const word = rawWords[i]
+      result.push({ word, startIndex: current })
+      current += word.length + 1
+    }
+    return result
+  }, [text])
+
   const totalChars = text.length
-  let runningCharIndex = 0
 
   return (
     <p ref={ref} className={`relative text-center mx-auto ${className}`} style={style}>
-      {words.map((word, wordIndex) => {
+      {wordsWithIndices.map(({ word, startIndex }, wordIndex) => {
         const wordChars = word.split('')
-        const wordStartIndex = runningCharIndex
-        runningCharIndex += word.length + 1
 
         return (
           <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.28em] my-[0.05em]">
@@ -31,7 +39,7 @@ const AnimatedText = ({ text, className = '', style }: AnimatedTextProps) => {
               <CharSpan
                 key={charIndex}
                 char={char}
-                index={wordStartIndex + charIndex}
+                index={startIndex + charIndex}
                 total={totalChars}
                 progress={scrollYProgress}
               />
@@ -58,7 +66,10 @@ const CharSpan = ({ char, index, total, progress }: CharSpanProps) => {
   return (
     <span className="relative inline">
       <span className="invisible">{char}</span>
-      <motion.span className="absolute left-0 top-0" style={{ opacity }}>
+      <motion.span
+        style={{ opacity }}
+        className="absolute inset-0 select-none text-white font-medium"
+      >
         {char}
       </motion.span>
     </span>
