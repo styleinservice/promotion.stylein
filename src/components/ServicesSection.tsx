@@ -143,7 +143,7 @@ const ServicesSection = ({ onSelectService, onServicesViewed }: ServicesSectionP
         </span>
         <h2
           className="font-black uppercase text-[#0C0C0C] tracking-tight leading-none"
-          style={{ fontSize: 'clamp(2.8rem, 10vw, 130px)' }}
+          style={{ fontSize: 'clamp(2.2rem, 6vw, 64px)' }}
         >
           Services
         </h2>
@@ -283,6 +283,78 @@ const ServicesSection = ({ onSelectService, onServicesViewed }: ServicesSectionP
             </div>
           </FadeIn>
         ))}
+      </div>
+
+      {/* Point 11: Add-on: Door & Edge Protection Showcase */}
+      <div className="max-w-6xl mx-auto mt-8 sm:mt-12">
+        <FadeIn delay={0.1} y={20}>
+          <div className="rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 bg-gradient-to-br from-[#141416] via-[#0D0D0F] to-[#070708] text-white border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 relative overflow-hidden">
+            {/* Top red accent laser line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E50914] to-transparent" />
+
+            {/* Left Column: Details */}
+            <div className="flex-1">
+              <div className="flex items-center gap-2.5 mb-2.5 flex-wrap">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#E50914] text-white shadow-[0_0_10px_rgba(229,9,20,0.4)]">
+                  Add-On Package
+                </span>
+                <span className="text-[#8E8E93] text-[11px] sm:text-xs font-mono uppercase tracking-wider">
+                  Available with any service
+                </span>
+              </div>
+
+              <h3 className="text-lg sm:text-xl md:text-2xl font-black uppercase tracking-tight text-white mb-3">
+                Door & Edge Protection
+              </h3>
+
+              {/* Responsive Feature Checklist Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-2 w-full">
+                {[
+                  'Door sill guards',
+                  'Door-edge protection',
+                  'A/B/C pillar coverage',
+                  'Rocker panel coverage',
+                  'Luggage-area lip protection',
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/90"
+                  >
+                    <span className="text-[#E50914] font-bold shrink-0">✓</span>
+                    <span className="font-normal">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Pricing & Action */}
+            <div className="flex flex-col sm:flex-row lg:flex-col items-center sm:items-center lg:items-end justify-between sm:justify-between lg:justify-center gap-4 pt-4 sm:pt-4 lg:pt-0 border-t border-white/[0.08] lg:border-none shrink-0 w-full sm:w-auto">
+              <div className="text-left sm:text-left lg:text-right w-full sm:w-auto">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#8E8E93] block">
+                  Add to any package
+                </span>
+                <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  +AED 1,500
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  if (onSelectService) {
+                    onSelectService('Door & Edge Protection (+AED 1,500)')
+                  } else {
+                    const quoteEl = document.getElementById('quote')
+                    if (quoteEl) quoteEl.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="w-full sm:w-auto px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#E50914] hover:bg-[#B80710] text-white transition-all duration-300 shadow-[0_6px_20px_rgba(229,9,20,0.4)] hover:scale-105 active:scale-95 cursor-pointer text-center"
+              >
+                <span>Add To Quote →</span>
+              </button>
+            </div>
+          </div>
+        </FadeIn>
       </div>
 
       {/* Pricing Note */}

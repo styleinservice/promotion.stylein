@@ -72,7 +72,7 @@ const QuoteSection = ({
   return (
     <section
       id="quote"
-      className="relative z-20 px-4 sm:px-6 md:px-8 py-10 sm:py-14 overflow-hidden"
+      className="relative z-20 px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10 overflow-hidden"
       style={{ background: '#050505' }}
     >
       {/* Ambient background glow */}
@@ -85,11 +85,11 @@ const QuoteSection = ({
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-6 sm:mb-8">
           <FadeIn delay={0} y={20}>
             <h2
-              className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-4"
-              style={{ fontSize: 'clamp(2.3rem, 7.5vw, 90px)' }}
+              className="font-black uppercase leading-tight tracking-tight text-center text-white mb-4"
+              style={{ fontSize: 'clamp(2.2rem, 6vw, 64px)' }}
             >
               Get Your Vehicle Quote
             </h2>

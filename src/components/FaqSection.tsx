@@ -18,7 +18,7 @@ const faqs: FAQItem[] = [
     number: '01',
     question: 'How long does PPF last in Dubai & UAE climate?',
     answer:
-      'Quality PPF can last approximately 7–10 years, depending on the selected film, installation precision, climate exposure, and routine care. All full-body installations at StyleIn include official warranty coverage protecting against yellowing, bubbling, cracking, and delamination.',
+      'Quality PPF can last approximately 7–10 years, depending on the selected film, installation precision, climate exposure, and routine care. All full-body installations at StyleInCar include official warranty coverage protecting against yellowing, bubbling, cracking, and delamination.',
     highlight: '7–10 Years Durability',
   },
   {
@@ -123,7 +123,7 @@ const FaqSection = () => {
   return (
     <section
       id="faq"
-      className="relative z-20 px-4 sm:px-8 md:px-12 pt-4 sm:pt-8 pb-16 sm:pb-24 overflow-hidden"
+      className="relative z-20 px-4 sm:px-8 md:px-12 pt-4 sm:pt-6 pb-6 sm:pb-8 overflow-hidden"
       style={{ background: '#050505' }}
     >
       {/* Background ambient crimson glow */}
@@ -136,11 +136,11 @@ const FaqSection = () => {
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-10">
+        <div className="text-center mb-6 sm:mb-8">
           <FadeIn delay={0} y={20}>
             <h2
-              className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-4"
-              style={{ fontSize: 'clamp(1.6rem, 7vw, 90px)' }}
+              className="font-black uppercase leading-tight tracking-tight text-center text-white mb-4"
+              style={{ fontSize: 'clamp(2.2rem, 6vw, 64px)' }}
             >
               Frequently Asked Questions
             </h2>

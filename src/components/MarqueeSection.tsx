@@ -289,7 +289,10 @@ const MarqueeSection = () => {
                 Explore Our Services
               </span>
             </div>
-            <h2 className="text-[#F5F5F5] font-black uppercase text-2xl sm:text-3xl md:text-4xl tracking-tight">
+            <h2
+              className="text-[#F5F5F5] font-black uppercase tracking-tight leading-tight"
+              style={{ fontSize: 'clamp(2.2rem, 6vw, 64px)' }}
+            >
               Our Protection & Care in Action
             </h2>
           </div>
