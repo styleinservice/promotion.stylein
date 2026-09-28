@@ -133,7 +133,7 @@ const ServicesSection = ({ onSelectService, onServicesViewed }: ServicesSectionP
   return (
     <section
       id="services"
-      className="rounded-t-[24px] sm:rounded-t-[40px] md:rounded-t-[60px] px-4 sm:px-8 md:px-14 lg:px-20 pt-8 sm:pt-10 md:pt-12 pb-8 sm:pb-10 md:pb-12 relative z-30"
+      className="rounded-t-[24px] sm:rounded-t-[40px] md:rounded-t-[60px] px-4 sm:px-8 md:px-14 lg:px-20 pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20 relative z-30"
       style={{ background: '#FFFFFF' }}
     >
       {/* Eyebrow & Main Heading */}

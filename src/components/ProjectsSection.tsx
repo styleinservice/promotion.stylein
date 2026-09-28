@@ -212,7 +212,7 @@ const ProjectsSection = ({ onOpenQuote }: ProjectsSectionProps) => {
   return (
     <section
       id="process"
-      className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-4 sm:px-8 md:px-12 pt-8 sm:pt-10 md:pt-12 pb-4 sm:pb-6 md:pb-8 overflow-hidden"
+      className="rounded-t-[24px] sm:rounded-t-[40px] md:rounded-t-[60px] -mt-[24px] sm:-mt-[40px] md:-mt-[60px] relative z-40 px-4 sm:px-8 md:px-12 pt-12 sm:pt-14 md:pt-16 pb-4 sm:pb-6 md:pb-8 overflow-hidden"
       style={{ background: '#050505' }}
     >
       {/* Header with Navigation Buttons */}
